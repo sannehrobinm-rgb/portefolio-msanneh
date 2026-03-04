@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétences</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="page-competences relative min-h-screen font-sans flex flex-col">
+
+  <!-- Vidéo en background -->
+  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover -z-10">
+    <source src="./assets/3141211-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas les vidéos HTML5.
+  </video>
+
+  <!-- Navigation -->
+  <header class="flex justify-start relative z-10 p-6 bg-black/40 bg-opacity-5">
+    <nav class="flex space-x-4 text-red-200 text-sm">
+      <a href="index.html" class="hover:underline">Accueil</a>
+     <!--  <a href="contact.html" class="hover:underline">Contact</a> -->
+      <a href="projets.html" class="hover:underline">Projets</a>
+    </nav>
+  </header>
+
+  <!-- Titre -->
+  <main class="flex-grow relative z-10 px-6 pt-6 pb-30">
+    <div class="max-w-md mx-auto text-center mt-2">
+      <h1 onclick="toggleText()" class="text-3xl md:text-5xl font-light text-red-400 mb-4">Savoir faire</h1>
+    </div>
+  <!--   <div class="max-w-4xl mx-auto mt-2 text-lg text-red-200">
+      <p id="toggleParagraph2" class="competences-text text-center text-white hidden px-4 rounded-lg bg-red-200 bg-opacity-10">
+        Créative dans l'âme et technique dans les mains, je transforme lumière, image et vidéo en expériences numériques interactives et immersives.
+        Curieuse, énergique et pragmatique, j'aime imaginer et prototyper des projets innovants.
+        Toujours avec un brin de fun et beaucoup de collaboration !
+      </p>
+      <script>
+        function toggleText() {
+          document.getElementById("toggleParagraph2").classList.toggle("hidden");
+        }
+      </script> -->
+    </div>
+
+<!-- Cercle central -->
+<div class="relative w-full max-w-[1200px] mx-auto mt-6 pb-52" style="aspect-ratio:1200/700;">
+  <div id="cercleCentral" 
+       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full cursor-pointer z-20 flex items-center justify-center text-red-700 font-semibold text-xl transition-transform duration-500 hover:scale-110">
+    <div class="absolute inset-0 rounded-full pointer-events-none"
+         style="background: radial-gradient(circle at 30% 30%, white 0%, white 30%, #f3f3f3 60%, #d9d9d9 80%, #bdbdbd 100%);
+                box-shadow: inset -10px -20px 40px rgba(0,0,0,0.3),
+                            inset 10px 10px 30px rgba(255,255,255,0.6),
+                            0 20px 40px rgba(0,0,0,0.4);">
+    </div>
+    <span class="relative z-10">Compétences</span>
+  </div>
+</div>
+
+
+ <div id="overlayCompetences" class="fixed inset-0 hidden z-50 bg-black/70 overflow-y-auto">
+  <div class="relative w-full max-w-[1200px] mx-auto min-h-screen md:min-h-[90vh] p-4">
+    <!-- Bouton fermer -->
+    <button id="closeOverlay" class="absolute top-4 right-4 text-white text-3xl z-50">✕</button>
+
+    <!-- Conteneur cartes -->
+    <div id="cardsContainer" class="relative w-full max-w-6xl mx-auto min-h-[600px] md:min-h-[600px]">
+      <!-- Les cartes seront générées par JS -->
+    </div>
+  </div>
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-black/40 p-4 text-white text-sm">
+    <div class="grid grid-cols-3 items-center">
+      <a href="projets.html" class="justify-self-start hover:underline">Projets</a>
+      <p class="text-center">© Mariama Sanneh -2026-</p>
+      <a href="photos.html" class="justify-self-end hover:underline">Photos</a>
+    </div>
+  </footer>
+
+ <!-- Lien vers le JS dynamique competencesMain.js -->
+  <script type="module" src="./js/competencesMain.js"></script>
+</body>
+</html>
