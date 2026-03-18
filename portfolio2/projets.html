@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets — Mariama Sanneh-Robin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-shared.css">
+  <style>
+    body, h1, h2, h3, h4, p, a, button, span, div { font-family: 'Inter', sans-serif !important; }
+  </style>
+  <style>
+      .video-bg {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .video-overlay {
+      position: fixed; inset: 0;
+      background: linear-gradient(160deg, rgba(10,8,8,0.72) 0%, rgba(10,8,8,0.45) 100%);
+      z-index: -1;
+    }
+    .page-hero {
+      min-height: 38vh; display: flex; align-items: flex-end;
+      padding: 0 3rem 4rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800; line-height: 0.92;
+      letter-spacing: -0.025em;
+    }
+    .page-hero h1 span { color: var(--accent); }
+     /* NAV */
+ .nav-links a:hover, .nav-links a.active { color: var(--or-l); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-contact-btn {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      background: transparent;
+      border: 1px solid rgba(212,169,106,0.5);
+      border-radius: 2px;
+      color: rgba(212,169,106,0.7);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+  .nav-contact-btn:hover {
+  border-color: var(--or-l);
+  color: var(--or-l);}
+  
+    .project-card-full {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 3px; overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+    }
+    .project-card-full:hover {
+      border-color: rgba(226,201,154,0.3);
+      transform: translateY(-4px);
+      background: var(--card-hover);
+    }
+    .project-card-full .card-body { padding: 2rem; }
+    .project-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 0.75rem;
+    }
+    .project-card-full h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--text); margin-bottom: 0.75rem;
+    }
+    .project-card-full p {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.8;
+    }
+    .project-card-header {
+      height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.02);
+    }
+    .project-card-header img {
+      max-height: 64px; max-width: 120px;
+      object-fit: contain; filter: brightness(0.85) saturate(0.7);
+    }
+    .project-card-header .hero-emoji { font-size: 2.8rem; }
+
+    /* ── LAYOUT LIGNES PROJETS ── */
+    .project-row {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 3rem;
+    }
+    .project-main-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 3px;
+      overflow: hidden;
+      min-width: 280px;
+      max-width: 280px;
+      flex-shrink: 0;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .project-main-card:hover {
+      border-color: rgba(226,201,154,0.3);
+      transform: translateY(-4px);
+    }
+    .project-details-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      flex: 1;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+      min-height: 200px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .project-details-scroll:empty::after {
+      content: '+ Ajouter des cards de détail';
+      color: rgba(255,255,255,0.15);
+      font-size: 0.8rem;
+      font-style: italic;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 0 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline class="video-bg">
+    <source src="/assets/12421216_3840_2160_30fps.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <a href="index.html" class="nav-logo" style="background: linear-gradient(105deg, #3d1a00, #a0522d, #cd7f32, #e8a96a, #fff0c8, #e8a96a, #cd7f32, #7a3010); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto;">MSR</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a>
+      <a href="competences.html">Compétences</a>
+      <button class="nav-contact-btn" onclick="openContact()" style="background:linear-gradient(105deg,#3d1a00,#a0522d,#cd7f32,#e8a96a,#fff0c8,#e8a96a,#cd7f32,#7a3010);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">Contact</button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent2);display:flex;align-items:center;gap:0.6rem;margin-bottom:1.2rem;" class="fade-up d1">
+        <span style="display:block;width:20px;height:1px;background:var(--accent2);"></span>
+        Réalisations
+      </div>
+           <h1 class="fade-up d2" style="font-family:'Inter',sans-serif;font-weight:800;color:white;">Mes <span style="background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">Projets</span></h1>
+      <style>@keyframes copperShimmer{0%{background-position:0% center}100%{background-position:100% center}}</style>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-inner">
+      <div style="display:flex; flex-direction:column; gap:3rem;">
+
+        <!-- Citizen 13 -->
+        <div class="project-card-full">
+          <div class="project-card-header">
+            <img src="/logo/CITIZEN13.png" alt="Citizen13"
+                 onerror="this.outerHTML='<span class=\'hero-emoji\'>🗳️</span>'">
+          </div>
+          <div class="card-body">
+            <div class="project-number">Projet 01</div>
+            <h3>Citizen 13</h3>
+            <p>Collecter et centraliser les informations et opinions des habitants lors de visites porte-à-porte, assurer le suivi des contacts, gérer les dons et adhésions, et générer des analyses et rapports automatisés pour optimiser les actions sur le terrain.</p>
+            <div class="project-tags" style="margin-top:1.25rem;">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Base de données</span>
+              <span class="tag">Terrain</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ma Novaschool -->
+        <div class="project-card-full">
+          <div class="project-card-header">
+            <img src="/logo/SchoolNova.png" alt="Ma Novaschool"
+                 onerror="this.outerHTML='<span class=\'hero-emoji\'>🏫</span>'">
+          </div>
+          <div class="card-body">
+            <div class="project-number">Projet 02</div>
+            <h3>Ma Novaschool</h3>
+            <p>L'application vise à moderniser et centraliser la gestion d'une école publique en simplifiant la communication, fluidifiant les tâches quotidiennes et améliorant la sécurité, l'organisation et les relations avec les familles.</p>
+            <div class="project-tags" style="margin-top:1.25rem;">
+              <span class="tag">Web App</span>
+              <span class="tag">UX/UI</span>
+              <span class="tag">Gestion scolaire</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Goultard -->
+        <div class="project-card-full">
+          <div class="project-card-header">
+            <img src="/logo/Capture d'écran 2026-02-24 à 15.40.38.png" alt="Goultard"
+                 onerror="this.outerHTML='<span class=\'hero-emoji\'>⚔️</span>'">
+          </div>
+          <div class="card-body">
+            <div class="project-number">Projet 03 — École</div>
+            <h3>Goultard</h3>
+            <p>Cette page présente le personnage dans ses différents univers grâce à une structure dynamique en React, HTML, CSS et JavaScript. Une mise en valeur visuelle et interactive du personnage Goultard.</p>
+            <div class="project-tags" style="margin-top:1.25rem;">
+              <span class="tag">React</span>
+              <span class="tag">HTML / CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Interactif</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pâtisseries -->
+        <div class="project-card-full">
+          <div class="project-card-header">
+            <img src="/logo/logo.png" alt="Pâtisseries"
+                 onerror="this.outerHTML='<span class=\'hero-emoji\'>🥐</span>'">
+          </div>
+          <div class="card-body">
+            <div class="project-number">Projet 04 — École</div>
+            <h3>Pâtisseries du monde</h3>
+            <p>Une application web interactive qui permet de découvrir, ajouter et rechercher des pâtisseries du monde entier, avec un focus particulier sur Paris et ses meilleures adresses.</p>
+            <div class="project-tags" style="margin-top:1.25rem;">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+              <span class="tag">Paris</span>
+              <span class="tag">Cartographie</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer class="site-footer">
+    <a href="competences.html" style="font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;">Compétences</a>
+    <p >© Mariama Sanneh-Robin — 2026</p>
+    <a href="#" onclick="openContact(); return false;" style="font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;"(--muted);">Contact</a>
+  </footer>
+ 
+
+  <!-- Contact Overlay -->
+  <div id="contactOverlay" class="overlay" onclick="closeOnBackdrop(event)">
+    <div class="overlay-box">
+      <button class="close-btn" onclick="closeContact()">✕</button>
+      <div class="overlay-title">Contactez-moi</div>
+      <p class="overlay-sub">Je réponds généralement sous 24h.</p>
+      <form action="https://formsubmit.co/sanneh.robin.m@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau message depuis mon portfolio">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-field">
+          <label class="form-label">Nom</label>
+          <input type="text" name="nom" required class="form-input" placeholder="Votre nom">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" required class="form-input" placeholder="votre@email.com">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Message</label>
+          <textarea name="message" rows="5" required class="form-input" style="resize:none;" placeholder="Votre message..."></textarea>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:1.5rem;">
+          <button type="submit" class="btn-primary" style="flex:1;">📧 Envoyer</button>
+          <button type="button" class="btn-ghost" onclick="closeContact()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+    function openContact() {
+      document.getElementById('contactOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeContact() {
+      document.getElementById('contactOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeOnBackdrop(e) { if (e.target === e.currentTarget) closeContact(); }
+  </script>
+</body>
+</html>

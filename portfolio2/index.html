@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariama Sanneh-Robin — Développeuse Web</title>
+  <!-- Fonts EN PREMIER, avant Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Inter:wght@300;800&display=swap" rel="stylesheet">
+  <!-- Tailwind avec config pour ne pas écraser les fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ──========== VARIABLES ==========── */
+    :root {
+      --rouge:   #c0392b;
+      --rouge-l: #e05c4b;
+      --or:      #d4a96a;
+      --or-l:    #e8c98a;
+      --pierre:  #a09080;
+      --text:    #f0ece4;
+      --glass:   rgba(255,255,255,0.06);
+      --glass-b: rgba(255,255,255,0.12);
+      --border:  rgba(255,255,255,0.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif !important;
+      font-weight: 400;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      
+    }
+
+    h1, h2, h3, h4, .syne,
+    .nav-logo, .nav-links a, .nav-contact-btn,
+    .hero-eyebrow, .section-tag, .section-title,
+    .btn-primary, .btn-ghost,
+    .skill-group-title, .proj-tag,
+    .contact-link-label, .form-label,
+    .overlay-title, .project-card h3 {
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    /* ──========== VIDEO BG ==========── */
+    .video-bg {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .video-overlay {
+      position: fixed; inset: 0;
+      background: linear-gradient(160deg, rgba(10,8,8,0.72) 0%, rgba(10,8,8,0.45) 100%);
+      z-index: -1;
+    }
+
+    /* ──========== NAV ==========── */
+    .main-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--or-l);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: rgba(240,236,228,0.55);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--or);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--or-l); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-contact-btn {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      background: transparent;
+      border: 1px solid rgba(212,169,106,0.5);
+      border-radius: 2px;
+      color: rgba(212,169,106,0.7);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+  .nav-contact-btn:hover {
+  border-color: var(--or-l);
+  color: var(--or-l);
+}
+
+    /* ──========== HERO ==========── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: flex-end;
+      padding: 0 2.5rem 0rem;
+      padding-top: 80px;
+    }
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif ;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pierre);
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 18px; height: 1px; background: var(--pierre);
+    }
+    .hero h1 {
+      font-weight: 800; line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: white;
+      width: 100vw;
+      margin-left: -2.5rem;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      word-break: keep-all;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    /* ──========== EFFET CUIVRE MÉTALLIQUE ==========── */
+    .hero h1 .copper {
+      background: linear-gradient(
+        105deg,
+        #f5d490 0%,
+        #fff0c8 20%,
+        #fffde8 40%,
+        #fff0c8 60%,
+        #f5d490 80%,
+        #fff0c8 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      filter: drop-shadow(0 2px 10px rgba(180, 90, 20, 0.5));
+      background-size: 200% auto;
+      animation: copperShimmer 4s ease-in-out infinite alternate;
+    }
+    @keyframes copperShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 100% center; }
+    }
+    .hero-sub {
+      margin-top: 1.75rem;
+      font-size: 0.95rem; font-weight: 300;
+      color: rgba(240,236,228,0.55);
+      max-width: 400px; line-height: 1.8;
+    }
+    .hero-cta {
+      margin-top: 3rem;
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      background: rgba(122, 48, 16, 0.85);; color:linear-gradient(105deg, #f5d490 0%, #fff0c8 20%, #fffde8 40%, #fff0c8 60%, #f5d490 80%, #fff0c8 100%);;
+      border: none; border-radius: 2px; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--rouge-l); transform: translateY(-2px); }
+    .btn-ghost {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      background: transparent; color: rgba(122, 48, 16, 0.85);
+      border: 1px solid var(--border); border-radius: 2px;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--or);
+      color: var(--or-l);
+      transform: translateY(-2px);
+    }
+ /* ──========== INTRO BIO ==========── */
+    .bio-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center;
+    }
+    .bio-text {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.9; font-weight: 300;
+    }
+    .bio-text strong { color: var(--text); font-weight: 500; }
+    .bio-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .stat-item { padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 3px; }
+    .stat-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;
+      font-family: 'Inner', sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 0 1.25rem 4.5rem; }
+      .bio-block { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    /* ──========== SECTION HEADERS ==========── */
+    .section-tag {
+      font-family: 'Inter', sans-serif!important;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--or);
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .section-tag::before {
+      content: ''; display: inline-block;
+      width: 18px; height: 1px; background: var(--or);
+    }
+    .section-title {
+      font-family: 'Inter', sans-serif!important;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800; line-height: 1.05;
+      color: white; margin-bottom: 2.5rem;
+    }
+
+    /* ──========== GLASS CARD (votre style)========== ── */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ──========== PROJECT CARDS — glass + ligne or au hover ==========── */
+    .project-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s, border-color 0.25s, transform 0.3s;
+      min-width: 280px;
+      max-width: 280px;
+      flex-shrink: 0;
+    }
+    /* -==========Ligne or à gauche au hover ==========—*/
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 2px; height: 0;
+      background: var(--or);
+      transition: height 0.35s ease;
+    }
+    .project-card:hover {
+      background: var(--glass-b);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-4px);
+    }
+    .project-card:hover::before { height: 100%; }
+
+    .project-card img {
+      height: 56px; width: 56px;
+      object-fit: contain; margin-bottom: 1rem;
+    }
+    .project-card .proj-emoji {
+      font-size: 2rem; margin-bottom: 1rem; display: block;
+    }
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      color: white; margin-bottom: 0.6rem;
+    }
+    .project-card p {
+      font-size: 0.8rem; color: rgba(240,236,228,0.55); line-height: 1.75;  min-width: 280px;
+  flex-shrink: 0;
+    }
+    .proj-tags {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem;
+    }
+    .proj-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.18rem 0.5rem;
+      border: 1px solid rgba(212,169,106,0.25);
+      border-radius: 2px; color: var(--pierre);
+    }
+
+    /* ──========== COMPÉTENCES SECTION ==========── */
+    .competences-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .skill-group {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .skill-group:hover { border-color: rgba(212,169,106,0.3); }
+    .skill-group-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    /* -==========Barre de niveau ==========— */
+    .skill-row {
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      gap: 1rem;
+    }
+    .skill-name {
+      font-size: 0.8rem; color: rgba(240,236,228,0.65); white-space: nowrap;
+    }
+    .skill-bar {
+      display: flex; gap: 3px; flex-shrink: 0;
+    }
+    .skill-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.2s;
+    }
+    .skill-dot.on { background: var(--or); }
+    .skill-group:hover .skill-dot.on { background: var(--or-l); }
+
+    /* ──========== CONTACT (esthetique) ==========── */
+    .contact-strip {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.85rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+      padding: 1rem 1.4rem;
+      text-decoration: none; color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .contact-link:hover {
+      border-color: rgba(212,169,106,0.35);
+      background: var(--glass-b);
+      transform: translateY(-2px);
+    }
+    .contact-link svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .contact-link-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.05em; color: white;
+    }
+    .contact-link-sub {
+      font-size: 0.7rem; color: var(--pierre); margin-top: 0.1rem;
+    }
+
+    /* ──========== OVERLAY (pour le mail, effet)==========── */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .overlay-box {
+      background: rgba(20,16,14,0.95);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 2.5rem;
+      width: 100%; max-width: 480px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .overlay.open .overlay-box { transform: translateY(0); }
+    .overlay-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem; font-weight: 800;
+      color: white; margin-bottom: 0.3rem;
+    }
+    .overlay-sub { font-size: 0.82rem; color: var(--pierre); margin-bottom: 2rem; }
+    .form-field { margin-bottom: 1.1rem; }
+    .form-label {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--pierre); margin-bottom: 0.4rem;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: white;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--or); }
+    .form-input::placeholder { color: rgba(160,144,128,0.45); }
+    .close-btn {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: rgba(255,255,255,0.07); border: none;
+      color: rgba(240,236,228,0.5); cursor: pointer;
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: all 0.2s;
+    }
+    .close-btn:hover { background: rgba(255,255,255,0.12); color: white; }
+
+    /* ──========== FOOTER (esthétique CSS)==========── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(16px);
+    }
+    .site-footer p {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--pierre);
+    }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.68rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--pierre);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--or-l); }
+
+    /* ──========== SECTION BIO ( espacement)==========── */
+    .section { padding: 6rem 2.5rem; }
+    .section-inner { max-width: 64rem; margin: 0 auto; }
+
+    /* ──========== FADE IN (effet)==========── */
+    .fade-up {
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 0.55s ease forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .d1 { animation-delay: 0.05s; }
+    .d2 { animation-delay: 0.18s; }
+    .d3 { animation-delay: 0.32s; }
+    .d4 { animation-delay: 0.46s; }
+
+    /* ──========== RESPONSIVE (pour mobil)==========── */
+    @media (max-width: 640px) {
+      .main-nav { padding: 1rem 1.25rem; }
+      .hero { padding: 80px 1.25rem 4rem; }
+      .site-footer { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!--========== Vidéo background ==========-->
+  <video autoplay muted loop playsinline class="video-bg">
+ <source src="/assets/13761895_1920_1080_25fps.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <!--========== Navigation  ==========-->
+  <nav class="main-nav">
+    <a href="index.html" class="nav-logo" style="background: linear-gradient(105deg, #3d1a00, #a0522d, #cd7f32, #e8a96a, #fff0c8, #e8a96a, #cd7f32, #7a3010); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: copperShimmer 4s ease-in-out infinite alternate;">SRM</a>
+    <div class="nav-links">
+      <a href="projets.html">Projets</a>
+      <a href="competences.html">Compétences</a>
+      <button class="nav-contact-btn" onclick="openContact()" style="background:linear-gradient(105deg,#3d1a00,#a0522d,#cd7f32,#e8a96a,#fff0c8,#e8a96a,#cd7f32,#7a3010);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">Contact</button>
+    </div>
+  </nav>
+
+  <!-- ══========== HERO( petit titre au dessus de mon nom) ==========══ -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow fade-up d1">Développeuse Web Junior · 2026</div>
+      <h1 class="fade-up d2" style="line-height:0.9;">
+       
+       
+        <span id="name-robin" style="display:block; font-family:'Inter',sans-serif; font-weight:300; white-space:nowrap; text-transform:none; -webkit-text-fill-color:rgba(122,48,16,0.85); color:rgba(122,48,16,0.85); letter-spacing:0.18em;">SANNEH-ROBIN</span>
+       <span id="name-mariama" class="copper" style="display:block; font-family:'Inter',sans-serif; font-weight:800; white-space:nowrap; text-transform:none;">Mariama</span>
+      </h1>
+
+      <div class="hero-cta fade-up d4">
+        <a href="projets.html" class="btn-primary">Voir mes projets</a>
+        <button class="btn-ghost" onclick="openContact()">Me contacter</button>
+      </div>
+    </div>
+  </section>
+ <!-- ══========== En quelques mots ==========══ -->
+  <section class="section" style="padding:5rem 2.5rem;">
+    <div class="section-inner">
+      <div class="section-tag">Parcours</div>
+      <h2 class="section-title">En quelques mots</h2>
+      <div class="bio-block">
+        <div>
+          <p class="bio-text">
+           
+            Issue d'un parcours créatif, j'ai choisi le développement web pour
+            <strong>donner vie à mes idées</strong> — de la maquette au code déployé.
+            Curieuse, énergique et pragmatique, j'aime imaginer et prototyper des projets innovants,
+            toujours avec un brin de fun et beaucoup de collaboration.
+          </p>
+         
+        </div>
+        <div class="bio-stats">
+          <div class="stat-item">
+            <div class="stat-number">4+</div>
+            <div class="stat-label">Projets réalisés</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2026</div>
+            <div class="stat-label">En activité</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Web</div>
+            <div class="stat-label">Frontend focus</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Paris</div>
+            <div class="stat-label">Basée à</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ══========== PROJETS ==========══ -->
+ <section style="padding:5rem 2.5rem;">
+    <div class="section-tag">Réalisations</div>
+    <h2 class="section-title">Projets</h2>
+ <div style="display:flex; gap:1.25rem; overflow-x:auto; padding-bottom:1rem; scrollbar-width:none; -ms-overflow-style:none;">
+
+      <div class="project-card">
+        <img src="./public/logo/CITIZEN13.png" alt="Citizen13"
+             onerror="this.outerHTML='<span class=\'proj-emoji\'>🗳️</span>'">
+        <h3>Citizen 13</h3>
+        <p>Centraliser les données des habitants lors de visites porte-à-porte, suivi des contacts, gestion des dons et rapports automatisés.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">Node.js</span>
+          <span class="proj-tag">BDD</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="./public/logo/SchoolNova.png" alt="Ma Novaschool"
+             onerror="this.outerHTML='<span class=\'proj-emoji\'>🏫</span>'">
+        <h3>Ma Novaschool</h3>
+        <p>Moderniser la gestion d'une école publique — communication, sécurité, organisation et relations avec les familles.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Web App</span>
+          <span class="proj-tag">UX/UI</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="./public/logo/Capture d’écran 2026-02-24 à 15.40.38.png" 
+             onerror="this.outerHTML='<span class=\'proj-emoji\'>⚔️</span>'">
+        <h3>Goultard</h3>
+        <p>Page interactive du personnage dans ses différents univers, structure dynamique en React, HTML, CSS et JavaScript.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">React</span>
+          <span class="proj-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+         <img src="./public/logo/logo.png"
+        onerror="this.outerHTML='<pan class=\'proj-emoji\'>>🥐</span>'">
+        <h3>Pâtisseries du monde</h3>
+        <p>Découvrir, ajouter et rechercher des pâtisseries du monde entier, avec un focus sur les meilleures adresses parisiennes.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">API</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2rem;">
+      <a href="projets.html" class="btn-ghost">Tous les projets →</a>
+    </div>
+  </section>
+
+  <!-- ══========== COMPÉTENCES APERÇU ==========══ -->
+  <section style="padding:5rem 2.5rem;">
+    <div class="section-tag">Savoir-faire</div>
+    <h2 class="section-title">Compétences</h2>
+
+    <div class="competences-preview max-w-3xl">
+
+      <div class="skill-group">
+        <div class="skill-group-title">Frontend</div>
+        <div class="skill-row">
+          <span class="skill-name">HTML / CSS</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">JavaScript</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">React</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Tailwind</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Outils</div>
+        <div class="skill-row">
+          <span class="skill-name">Git / GitHub</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Figma</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Vite</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Créatif</div>
+        <div class="skill-row">
+          <span class="skill-name">Photographie</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Vidéo</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Design UI</span>
+          <div class="skill-bar">
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot on"></div><div class="skill-dot on"></div>
+            <div class="skill-dot"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2rem;">
+      <a href="competences.html" class="btn-ghost">Voir le détail →</a>
+    </div>
+  </section>
+
+  <!-- ══========== CONTACT ==========══ -->
+  <section style="padding:5rem 2.5rem;">
+    <div class="section-tag">Me retrouver</div>
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-strip">
+
+      <a href="https://github.com/sannehrobinm-rgb" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--or)"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-sub">Mes projets open source</div>
+        </div>
+      </a>
+
+      <a href="https://linkedin.com/in/ma-san-4883a81a" target="_blank" rel="noopener noreferrer" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--or)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-sub">Connectons-nous</div>
+        </div>
+      </a>
+
+      <button class="contact-link" onclick="openContact()" style="border:none;cursor:pointer;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--or)"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-sub">Envoyer un message</div>
+        </div>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ==========  Footer. ========== -->
+  <footer class="site-footer">
+    <p style="text-align:center; flex:1;">© Mariama Sanneh-Robin — 2026</p>
+    <div class="footer-links">
+     </div>
+  </footer>
+
+  <!-- ══========================================== OVERLAY CONTACT  ======================================══ -->
+  <div id="contactOverlay" class="overlay" onclick="closeOnBackdrop(event)">
+    <div class="overlay-box">
+      <button class="close-btn" onclick="closeContact()">✕</button>
+      <div class="overlay-title">Contactez-moi</div>
+      <p class="overlay-sub">Je réponds généralement sous 24h.</p>
+      <form action="https://formsubmit.co/sanneh.robin.m@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau message depuis mon portfolio">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-field">
+          <label class="form-label">Nom</label>
+          <input type="text" name="nom" required class="form-input" placeholder="Votre nom">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" required class="form-input" placeholder="votre@email.com">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Message</label>
+          <textarea name="message" rows="5" required class="form-input" style="resize:none;" placeholder="Votre message..."></textarea>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:1.5rem;">
+          <button type="submit" class="btn-primary" style="flex:1;">📧 Envoyer</button>
+          <button type="button" class="btn-ghost" onclick="closeContact()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lien vers le JS dynamique competencesMain.js (votre code inchangé) -->
+  <script type="module" src="./js/competencesMain.js"></script>
+
+  <script>
+    // Nom pleine largeur — recalcule à chaque resize
+    function fitTitle() {
+      const padding = window.innerWidth <= 640 ? 40 : 80;
+      const available = window.innerWidth - padding;
+
+      const mariama = document.getElementById('name-mariama');
+      mariama.style.fontSize = '10px';
+      const r = available / mariama.scrollWidth;
+      mariama.style.fontSize = (10 * r * 8) + 'px';
+
+      
+      document.getElementById('name-robin').style.fontSize  = (10 * r * 8) + 'px';
+    }
+    window.addEventListener('load', fitTitle);
+    window.addEventListener('resize', fitTitle);
+
+    function openContact() {
+      document.getElementById('contactOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeContact() {
+      document.getElementById('contactOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeOnBackdrop(e) {
+      if (e.target === e.currentTarget) closeContact();
+    }
+  </script>
+</body>
+</html>

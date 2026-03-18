@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétences — Mariama Sanneh-Robin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-shared.css">
+  <style>
+    body, h1, h2, h3, h4, p, a, button, span, div { font-family: 'Inter', sans-serif !important; }
+  </style>
+  <style>
+     .video-bg {
+      position: fixed; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .video-overlay {
+      position: fixed; inset: 0;
+      background: linear-gradient(160deg, rgba(10,8,8,0.72) 0%, rgba(10,8,8,0.45) 100%);
+      z-index: -1;
+    }
+    .page-hero {
+      min-height: 38vh; display: flex; align-items: flex-end;
+      padding: 0 3rem 4rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800; line-height: 0.92;
+      letter-spacing: -0.025em;
+    }
+    .page-hero h1 span { color: var(--accent); }
+
+     /* NAV */
+ .nav-links a:hover, .nav-links a.active { color: var(--or-l); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-contact-btn {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      background: transparent;
+      border: 1px solid rgba(212,169,106,0.5);
+      border-radius: 2px;
+      color: rgba(212,169,106,0.7);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+  .nav-contact-btn:hover {
+  border-color: var(--or-l);
+  color: var(--or-l);}
+
+    /* Big skill rows */
+    .competences-list { display: flex; flex-direction: column; gap: 1px; }
+    .competence-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--card-border);
+      gap: 1.5rem;
+      transition: padding-left 0.25s;
+      cursor: default;
+    }
+    .competence-row:last-child { border-bottom: 1px solid var(--card-border); }
+    .competence-row:hover { padding-left: 0.5rem; }
+    .competence-name {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 700; color: var(--text);
+      min-width: 180px;
+    }
+    .competence-desc {
+      font-size: 0.82rem; color: var(--muted);
+      flex: 1; line-height: 1.7;
+    }
+    .competence-level {
+      display: flex; gap: 5px; align-items: center; flex-shrink: 0;
+    }
+    .level-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--card-border); transition: background 0.2s;
+    }
+    .level-dot.filled { background: var(--accent2); }
+    .competence-row:hover .level-dot.filled { background: var(--accent); }
+
+    /* Category headings */
+    .cat-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0; margin-top: 3rem;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Soft skills pills */
+    .pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+    .pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid var(--card-border);
+      border-radius: 100px; color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 0 1.25rem 3rem; }
+      .competence-row { flex-wrap: wrap; }
+      .competence-desc { flex-basis: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline class="video-bg" style="opacity:0.45;">
+    <source src="/assets/3141211-uhd_3840_2160_25fps.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <a href="index.html" class="nav-logo" style="background: linear-gradient(105deg, #3d1a00, #a0522d, #cd7f32, #e8a96a, #fff0c8, #e8a96a, #cd7f32, #7a3010); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto;">MSR</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a> 
+      <a href="projets.html">Projets</a> 
+      <button class="nav-contact-btn" onclick="openContact()" style="background:linear-gradient(105deg,#3d1a00,#a0522d,#cd7f32,#e8a96a,#fff0c8,#e8a96a,#cd7f32,#7a3010);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">Contact</button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent2);display:flex;align-items:center;gap:0.6rem;margin-bottom:1.2rem;" class="fade-up d1">
+        <span style="display:block;width:20px;height:1px;background:var(--accent2);"></span>
+        Savoir-faire
+      </div>
+      <h1 class="fade-up d2" style="font-family:'Inter',sans-serif;font-weight:800;color:white;">Mes <span style="background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">compétences</span></h1>
+      <style>@keyframes copperShimmer{0%{background-position:0% center}100%{background-position:100% center}}</style>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section" style="padding-top:0;">
+    <div class="section-inner">
+
+      <!-- Techniques -->
+      <p class="cat-heading">Développement</p>
+      <div class="competences-list">
+        <div class="competence-row">
+          <div class="competence-name">HTML / CSS</div>
+          <div class="competence-desc">Structuration sémantique, mise en page responsive, animations CSS, Tailwind CSS.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">JavaScript</div>
+          <div class="competence-desc">Manipulation du DOM, logique applicative, fetch API, modules ES6+.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">React</div>
+          <div class="competence-desc">Composants fonctionnels, hooks, gestion d'état, projets école et personnels.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">Node.js</div>
+          <div class="competence-desc">Serveur Express, API REST, gestion de routes et middleware.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outils -->
+      <p class="cat-heading">Outils & workflow</p>
+      <div class="competences-list">
+        <div class="competence-row">
+          <div class="competence-name">Git / GitHub</div>
+          <div class="competence-desc">Versioning, branches, pull requests, déploiement.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">Figma</div>
+          <div class="competence-desc">Maquettes, prototypes interactifs, design systems basiques.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">Vite / npm</div>
+          <div class="competence-desc">Bundler moderne, scripts de build, gestion des dépendances.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Créatif -->
+      <p class="cat-heading">Créatif & médias</p>
+      <div class="competences-list">
+        <div class="competence-row">
+          <div class="competence-name">Photographie</div>
+          <div class="competence-desc">Composition, retouche, intégration dans des projets web et visuels.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">Vidéo</div>
+          <div class="competence-desc">Captation, montage, intégration d'assets vidéo dans des interfaces web.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+        <div class="competence-row">
+          <div class="competence-name">Design UI</div>
+          <div class="competence-desc">Sens des proportions, typographie, couleur, cohérence visuelle.</div>
+          <div class="competence-level">
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot filled"></div>
+            <div class="level-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Soft skills -->
+      <p class="cat-heading" style="margin-top:3.5rem;">Soft skills</p>
+      <div class="pills" style="margin-top:1.5rem;">
+        <span class="pill">Créativité</span>
+        <span class="pill">Autonomie</span>
+        <span class="pill">Collaboration</span>
+        <span class="pill">Curiosité</span>
+        <span class="pill">Pragmatisme</span>
+        <span class="pill">Énergie</span>
+        <span class="pill">Adaptabilité</span>
+        <span class="pill">Sens du détail</span>
+      </div>
+
+      
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="projets.html" style="font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;">Projets</a>
+    <p>© Mariama Sanneh-Robin — 2026</p>
+    <a href="#" onclick="openContact(); return false;" style="font-family:'Inter',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;"(--muted);">Contact</a>
+  </footer>
+
+  <!-- Contact Overlay -->
+  <div id="contactOverlay" class="overlay" onclick="closeOnBackdrop(event)">
+    <div class="overlay-box">
+      <button class="close-btn" onclick="closeContact()">✕</button>
+      <div class="overlay-title">Contactez-moi</div>
+      <p class="overlay-sub">Je réponds généralement sous 24h.</p>
+      <form action="https://formsubmit.co/sanneh.robin.m@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau message depuis mon portfolio">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <div class="form-field">
+          <label class="form-label">Nom</label>
+          <input type="text" name="nom" required class="form-input" placeholder="Votre nom">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" required class="form-input" placeholder="votre@email.com">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Message</label>
+          <textarea name="message" rows="5" required class="form-input" style="resize:none;" placeholder="Votre message..."></textarea>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-top:1.5rem;">
+          <button type="submit" class="btn-primary" style="flex:1;">📧 Envoyer</button>
+          <button type="button" class="btn-ghost" onclick="closeContact()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+    function openContact() {
+      document.getElementById('contactOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeContact() {
+      document.getElementById('contactOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeOnBackdrop(e) { if (e.target === e.currentTarget) closeContact(); }
+  </script>
+</body>
+</html>
