@@ -1,0 +1,22 @@
+.cards-container {
+  display: flex;
+  gap: 20px;
+
+  overflow-x: auto;     /* permet le scroll horizontal */
+  scroll-snap-type: x mandatory;
+
+  padding: 20px;
+}
+
+.card {
+  flex: 0 0 30%;        /* environ 3 cartes visibles */
+  height: 250px;
+
+  background: #111;
+  color: white;
+
+  border-radius: 10px;
+  padding: 20px;
+
+  scroll-snap-align: start;
+}
