@@ -310,8 +310,13 @@
     .project-card:hover::before { height: 100%; }
 
     .project-card img {
-      height: 56px; width: 56px;
-      object-fit: contain; margin-bottom: 1rem;
+      height: 64px; width: 64px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 1rem auto;
+      display: block;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(212,169,106,0.2);
     }
     .project-card .proj-emoji {
       font-size: 2rem; margin-bottom: 1rem; display: block;
@@ -595,7 +600,7 @@
     <h2 class="section-title">Projets</h2>
  <div style="display:flex; gap:1.25rem; overflow-x:auto; padding-bottom:1rem; scrollbar-width:none; -ms-overflow-style:none;">
 
-      <div class="project-card">
+      <div class="project-card" onclick="window.location='projets.html#citizen13'" style="cursor:pointer;" title="Voir le projet">
         <img src="./public/logo/CITIZEN13.png" alt="Citizen13"
              onerror="this.outerHTML='<span class=\'proj-emoji\'>🗳️</span>'">
         <h3>Citizen 13</h3>
@@ -607,7 +612,7 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" onclick="window.location='projets.html#novaschool'" style="cursor:pointer;" title="Voir le projet">
         <img src="./public/logo/SchoolNova.png" alt="Ma Novaschool"
              onerror="this.outerHTML='<span class=\'proj-emoji\'>🏫</span>'">
         <h3>Ma Novaschool</h3>
@@ -618,9 +623,9 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <img src="./public/logo/Capture d’écran 2026-02-24 à 15.40.38.png" 
-             onerror="this.outerHTML='<span class=\'proj-emoji\'>⚔️</span>'">
+      <div class="project-card" onclick="window.location='projets.html#goultard'" style="cursor:pointer;" title="Voir le projet">
+        <img src="./pu./public/logo/Wakfu_Logo.png" 
+             alt="Goultard" onerror="this.outerHTML='<span class=\'proj-emoji\'>⚔️</span>'">
         <h3>Goultard</h3>
         <p>Page interactive du personnage dans ses différents univers, structure dynamique en React, HTML, CSS et JavaScript.</p>
         <div class="proj-tags">
@@ -629,7 +634,7 @@
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" onclick="window.location='projets.html#patisseries'" style="cursor:pointer;" title="Voir le projet">
          <img src="./public/logo/logo.png"
         onerror="this.outerHTML='<pan class=\'proj-emoji\'>>🥐</span>'">
         <h3>Pâtisseries du monde</h3>
@@ -637,6 +642,18 @@
         <div class="proj-tags">
           <span class="proj-tag">JavaScript</span>
           <span class="proj-tag">API</span>
+        </div>
+      </div>
+
+      <div class="project-card" onclick="window.location='projets.html#portfolio'" style="cursor:pointer;" title="Voir le projet">
+        <img src="data:image/png;base64,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" alt="Portfolio SRM" onerror="this.outerHTML='<span class=\'proj-emoji\'>🌐</span>'">
+        <h3>Portfolio</h3>
+        <p>Mon portfolio personnel — présentation de mes projets, compétences et parcours. Conçu et développé en HTML, CSS et JavaScript vanilla, déployé sur Vercel.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">HTML</span>
+          <span class="proj-tag">CSS</span>
+          <span class="proj-tag">JavaScript</span>
+          <span class="proj-tag">Vercel</span>
         </div>
       </div>
 

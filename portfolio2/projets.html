@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" style="scroll-behavior:smooth;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,14 +80,18 @@
       font-size: 0.85rem; color: var(--muted); line-height: 1.8;
     }
     .project-card-header {
-      height: 120px;
+      height: 140px;
       display: flex; align-items: center; justify-content: center;
       border-bottom: 1px solid var(--card-border);
       background: rgba(255,255,255,0.02);
     }
     .project-card-header img {
-      max-height: 64px; max-width: 120px;
-      object-fit: contain; filter: brightness(0.85) saturate(0.7);
+      width: 80px; height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid rgba(212,169,106,0.25);
+      background: rgba(255,255,255,0.06);
+      filter: none;
     }
     .project-card-header .hero-emoji { font-size: 2.8rem; }
 
@@ -175,9 +179,9 @@
       <div style="display:flex; flex-direction:column; gap:3rem;">
 
         <!-- Citizen 13 -->
-        <div class="project-card-full">
+        <div class="project-card-full" id="citizen13" style="scroll-margin-top:90px;">
           <div class="project-card-header">
-            <img src="/logo/CITIZEN13.png" alt="Citizen13"
+            <img src="./public/logo/CITIZEN13.png" alt="Citizen13"
                  onerror="this.outerHTML='<span class=\'hero-emoji\'>🗳️</span>'">
           </div>
           <div class="card-body">
@@ -194,9 +198,9 @@
         </div>
 
         <!-- Ma Novaschool -->
-        <div class="project-card-full">
+        <div class="project-card-full" id="novaschool" style="scroll-margin-top:90px;">
           <div class="project-card-header">
-            <img src="/logo/SchoolNova.png" alt="Ma Novaschool"
+            <img src="./public/logo/SchoolNova.png" alt="Ma Novaschool"
                  onerror="this.outerHTML='<span class=\'hero-emoji\'>🏫</span>'">
           </div>
           <div class="card-body">
@@ -212,9 +216,9 @@
         </div>
 
         <!-- Goultard -->
-        <div class="project-card-full">
+        <div class="project-card-full" id="goultard" style="scroll-margin-top:90px;">
           <div class="project-card-header">
-            <img src="/logo/Capture d'écran 2026-02-24 à 15.40.38.png" alt="Goultard"
+            <img src="./public/logo/Wakfu_Logo.png" alt="Goultard"
                  onerror="this.outerHTML='<span class=\'hero-emoji\'>⚔️</span>'">
           </div>
           <div class="card-body">
@@ -231,9 +235,9 @@
         </div>
 
         <!-- Pâtisseries -->
-        <div class="project-card-full">
+        <div class="project-card-full" id="patisseries" style="scroll-margin-top:90px;">
           <div class="project-card-header">
-            <img src="/logo/logo.png" alt="Pâtisseries"
+            <img src="./public/logo/logo.png" alt="Pâtisseries"
                  onerror="this.outerHTML='<span class=\'hero-emoji\'>🥐</span>'">
           </div>
           <div class="card-body">
@@ -245,6 +249,27 @@
               <span class="tag">API</span>
               <span class="tag">Paris</span>
               <span class="tag">Cartographie</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio -->
+        <div class="project-card-full" id="portfolio" style="scroll-margin-top:90px;">
+          <div class="project-card-header">
+            <img src="data:image/png;base64,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" alt="Portfolio SRM">
+          </div>
+          <div class="card-body">
+            <div class="project-number">Projet 05</div>
+            <h3>Portfolio</h3>
+            <p>Mon portfolio personnel — présentation de mes projets, compétences et parcours. Conçu et développé en HTML, CSS et JavaScript vanilla, avec effets 3D, carte CV interactive, animations CSS et déploiement sur Vercel.</p>
+            <div class="project-tags" style="margin-top:1.25rem;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Vercel</span>
+            </div>
+            <div style="margin-top:1.25rem;">
+              <a href="https://portfolio-sanneh-robin.vercel.app" target="_blank" rel="noopener" style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--accent2, #d4a96a);border:1px solid rgba(212,169,106,0.35);padding:0.4rem 1rem;border-radius:2px;transition:all 0.2s;" onmouseover="this.style.borderColor='#d4a96a';this.style.color='#e8c98a'" onmouseout="this.style.borderColor='rgba(212,169,106,0.35)';this.style.color='var(--accent2, #d4a96a)'">Voir le site →</a>
             </div>
           </div>
         </div>
