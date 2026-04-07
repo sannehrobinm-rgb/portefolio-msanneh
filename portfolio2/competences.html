@@ -97,34 +97,19 @@
       0%,100% { transform:rotateY(180deg) translateY(0px) rotateX(1deg); }
       50%      { transform:rotateY(180deg) translateY(-10px) rotateX(-1deg); }
     }
-    .fc-card.fc-spin-back  { animation:fcSpinBack  2.6s cubic-bezier(0.22,0.04,0.12,1) forwards; }
-    .fc-card.fc-spin-front { animation:fcSpinFront 2.6s cubic-bezier(0.22,0.04,0.12,1) forwards; }
-    @keyframes fcSpinBack {
-      0%   { transform:rotateY(0deg)    translateY(0px)   scale(1);    }
-      6%   { transform:rotateY(120deg)  translateY(-14px) scale(1.02); }
-      14%  { transform:rotateY(360deg)  translateY(-34px) scale(1.06); }
-      24%  { transform:rotateY(720deg)  translateY(-46px) scale(1.08); }
-      34%  { transform:rotateY(1080deg) translateY(-42px) scale(1.07); }
-      45%  { transform:rotateY(1440deg) translateY(-30px) scale(1.05); }
-      57%  { transform:rotateY(1620deg) translateY(-18px) scale(1.03); }
-      70%  { transform:rotateY(1800deg) translateY(-10px) scale(1.01); }
-      82%  { transform:rotateY(1890deg) translateY(-4px)  scale(1);    }
-      91%  { transform:rotateY(1944deg) translateY(-1px)  scale(1);    }
-      100% { transform:rotateY(1980deg) translateY(0px)   scale(1);    }
-    }
-    @keyframes fcSpinFront {
-      0%   { transform:rotateY(1980deg) translateY(0px)   scale(1);    }
-      6%   { transform:rotateY(2100deg) translateY(-14px) scale(1.02); }
-      14%  { transform:rotateY(2340deg) translateY(-34px) scale(1.06); }
-      24%  { transform:rotateY(2700deg) translateY(-46px) scale(1.08); }
-      34%  { transform:rotateY(3060deg) translateY(-42px) scale(1.07); }
-      45%  { transform:rotateY(3420deg) translateY(-30px) scale(1.05); }
-      57%  { transform:rotateY(3600deg) translateY(-18px) scale(1.03); }
-      70%  { transform:rotateY(3780deg) translateY(-10px) scale(1.01); }
-      82%  { transform:rotateY(3870deg) translateY(-4px)  scale(1);    }
-      91%  { transform:rotateY(3924deg) translateY(-1px)  scale(1);    }
-      100% { transform:rotateY(3960deg) translateY(0px)   scale(1);    }
-    }
+   .fc-card.fc-spin-back  { animation:fcSpinBack  0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+.fc-card.fc-spin-front { animation:fcSpinFront 0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+ @keyframes fcSpinBack {
+  0%   { transform:rotateY(0deg)   translateY(0px)  scale(1);    }
+  40%  { transform:rotateY(90deg)  translateY(-8px) scale(1.04); }
+  100% { transform:rotateY(180deg) translateY(0px)  scale(1);    }
+}
+
+    @keyframes fcSpinFront{
+  0%   { transform:rotateY(180deg) translateY(0px)  scale(1);    }
+  40%  { transform:rotateY(270deg) translateY(-8px) scale(1.04); }
+  100% { transform:rotateY(360deg) translateY(0px)  scale(1);    }
+}
     .fc-face {
       position:absolute;inset:0;border-radius:18px;overflow:hidden;
       backface-visibility:hidden;-webkit-backface-visibility:hidden;
@@ -385,10 +370,10 @@
         spawnRing(x, y);
         if (phase === 'fc-idle-front' || phase === 'fc-spin-front') {
           setPhase('fc-spin-back');
-          setTimeout(function() { setPhase('fc-idle-back'); busy = false; }, 2600);
+          setTimeout(function() { setPhase('fc-idle-back'); busy = false; }, 700);
         } else {
           setPhase('fc-spin-front');
-          setTimeout(function() { setPhase('fc-idle-front'); busy = false; }, 2600);
+          setTimeout(function() { setPhase('fc-idle-front'); busy = false; }, 700);
         }
       }
 
