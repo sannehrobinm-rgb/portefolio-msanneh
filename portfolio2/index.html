@@ -129,8 +129,8 @@
     .hero {
       min-height: 40vh;
       display: flex; align-items: flex-end;
-      padding: 0 2.5rem 0rem;
-      padding-top: 80px;
+      padding: 80px 2.5rem 2rem;
+     
     }
     .hero-eyebrow {
       font-family: 'Inter', sans-serif ;
@@ -155,7 +155,7 @@
       padding-right: 2.5rem;
       word-break: keep-all;
       white-space: nowrap;
-      overflow: hidden;
+      overflow: visible;
     }
 
     /* ──========== EFFET CUIVRE MÉTALLIQUE ==========── */
@@ -196,7 +196,7 @@
       font-size: 0.72rem; font-weight: 700;
       letter-spacing: 0.13em; text-transform: uppercase;
       padding: 0.85rem 2rem;
-      background: rgba(122, 48, 16, 0.85);; color:linear-gradient(105deg, #f5d490 0%, #fff0c8 20%, #fffde8 40%, #fff0c8 60%, #f5d490 80%, #fff0c8 100%);;
+      background: rgba(122, 48, 16, 0.85); color: #f0ece4;
       border: none; border-radius: 2px; cursor: pointer;
       text-decoration: none; display: inline-block;
       transition: background 0.2s, transform 0.2s;
@@ -237,7 +237,7 @@
     }
     .stat-label {
       font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;
-      font-family: 'Inner', sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+      font-family: 'Inter', sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
     }
 
     @media (max-width: 768px) {
@@ -558,20 +558,18 @@
     </div>
   </section>
  <!-- ══========== En quelques mots ==========══ -->
-  <section class="section" style="padding:5rem 2.5rem;">
+  <section class="section" style="padding:2rem 2.5rem 5rem;">
     <div class="section-inner">
       <div class="section-tag">Parcours</div>
       <h2 class="section-title">En quelques mots</h2>
       <div class="bio-block">
         <div>
-          <p class="bio-text">
-          <p>J’ai travaillé pendant 8 ans dans le spectacle vivant et l’événementiel, dans des environnements exigeants où rigueur, organisation et réactivité sont essentielles.</p>
-
-<p>Aujourd’hui, je me reconvertis et me spécialise dans le développement web.</p>
-
-<p>Je conçois des applications web de A à Z, du backend à l’interface utilisateur. J’aime comprendre en profondeur, structurer la logique et construire des solutions concrètes.</p>
-
-<p>Ce qui me motive, c’est de créer des applications utiles, bien pensées et fiables.</p>
+          <div class="bio-text">
+            <p>J’ai travaillé pendant 8 ans dans le spectacle vivant et l’événementiel, dans des environnements exigeants où rigueur, organisation et réactivité sont essentielles.</p>
+            <p>Aujourd’hui, je me reconvertis et me spécialise dans le développement web.</p>
+            <p>Je conçois des applications web de A à Z, du backend à l’interface utilisateur. J’aime comprendre en profondeur, structurer la logique et construire des solutions concrètes.</p>
+            <p>Ce qui me motive, c’est de créer des applications utiles, bien pensées et fiables.</p>
+          </div>
         </div>
         <div class="bio-stats">
           <div class="stat-item">
@@ -624,7 +622,7 @@
       </div>
 
       <div class="project-card" onclick="window.location='projets.html#goultard'" style="cursor:pointer;" title="Voir le projet">
-        <img src="./pu./public/logo/Wakfu_Logo.png" 
+        <img src="./public/logo/Wakfu_Logo.png" 
              alt="Goultard" onerror="this.outerHTML='<span class=\'proj-emoji\'>⚔️</span>'">
         <h3>Goultard</h3>
         <p>Page interactive du personnage dans ses différents univers, structure dynamique en React, HTML, CSS et JavaScript.</p>
@@ -636,7 +634,7 @@
 
       <div class="project-card" onclick="window.location='projets.html#patisseries'" style="cursor:pointer;" title="Voir le projet">
          <img src="./public/logo/logo.png"
-        onerror="this.outerHTML='<pan class=\'proj-emoji\'>>🥐</span>'">
+        onerror="this.outerHTML='<span class=\'proj-emoji\'>🥐</span>'">
         <h3>Pâtisseries du monde</h3>
         <p>Découvrir, ajouter et rechercher des pâtisseries du monde entier, avec un focus sur les meilleures adresses parisiennes.</p>
         <div class="proj-tags">
@@ -846,20 +844,31 @@
 
   <script>
     // Nom pleine largeur — recalcule à chaque resize
-    function fitTitle() {
-      const padding = window.innerWidth <= 640 ? 40 : 80;
-      const available = window.innerWidth - padding;
+  function fitTitle() {
+  const hero = document.querySelector('.hero');
+  const heroStyle = window.getComputedStyle(hero);
+  const paddingLeft  = parseFloat(heroStyle.paddingLeft);
+  const paddingRight = parseFloat(heroStyle.paddingRight);
+  const available = (window.innerWidth - paddingLeft - paddingRight)* 0.90;
 
-      const mariama = document.getElementById('name-mariama');
-      mariama.style.fontSize = '10px';
-      const r = available / mariama.scrollWidth;
-      mariama.style.fontSize = (10 * r * 8) + 'px';
+  const mariama = document.getElementById('name-mariama');
+  const robin   = document.getElementById('name-robin');
 
-      
-      document.getElementById('name-robin').style.fontSize  = (10 * r * 8) + 'px';
-    }
-    window.addEventListener('load', fitTitle);
-    window.addEventListener('resize', fitTitle);
+  mariama.style.fontSize = '100px';
+  robin.style.fontSize   = '100px';
+
+  const rMariama = available / mariama.scrollWidth;
+  const rRobin   = available / robin.scrollWidth;
+
+  mariama.style.fontSize = (100 * rMariama) + 'px';
+  robin.style.fontSize   = (100 * rRobin)   + 'px';
+}
+if (document.fonts) {
+  document.fonts.ready.then(fitTitle);
+} else {
+  window.addEventListener('load', fitTitle);
+}
+window.addEventListener('resize', fitTitle);
 
     function openContact() {
       document.getElementById('contactOverlay').classList.add('open');
