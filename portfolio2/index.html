@@ -809,35 +809,37 @@
      </div>
   </footer>
 
-  <!-- ══========================================== OVERLAY CONTACT  ======================================══ -->
-  <div id="contactOverlay" class="overlay" onclick="closeOnBackdrop(event)">
-    <div class="overlay-box">
-      <button class="close-btn" onclick="closeContact()">✕</button>
-      <div class="overlay-title">Contactez-moi</div>
-      <p class="overlay-sub">Je réponds généralement sous 24h.</p>
-      <form action="https://formsubmit.co/sanneh.robin.m@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Nouveau message depuis mon portfolio">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <div class="form-field">
-          <label class="form-label">Nom</label>
-          <input type="text" name="nom" required class="form-input" placeholder="Votre nom">
-        </div>
-        <div class="form-field">
-          <label class="form-label">Email</label>
-          <input type="email" name="email" required class="form-input" placeholder="votre@email.com">
-        </div>
-        <div class="form-field">
-          <label class="form-label">Message</label>
-          <textarea name="message" rows="5" required class="form-input" style="resize:none;" placeholder="Votre message..."></textarea>
-        </div>
-        <div style="display:flex;gap:0.75rem;margin-top:1.5rem;">
-          <button type="submit" class="btn-primary" style="flex:1;">📧 Envoyer</button>
-          <button type="button" class="btn-ghost" onclick="closeContact()">Annuler</button>
-        </div>
-      </form>
-    </div>
+ 
+<!-- ══========================================== OVERLAY CONTACT  ======================================══ -->
+<div id="contactOverlay" class="overlay" onclick="closeOnBackdrop(event)">
+  <div class="overlay-box">
+    <button class="close-btn" onclick="closeContact()">✕</button>
+    <div class="overlay-title">Contactez-moi</div>
+    <p class="overlay-sub">Je réponds généralement sous 24h.</p>
+    <form action="https://formsubmit.co/sanneh.robin.m@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="Nouveau message depuis mon portfolio">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://portfolio-sanneh-robin.vercel.app">
+      <div class="form-field">
+        <label class="form-label">Nom</label>
+        <input type="text" name="nom" required class="form-input" placeholder="Votre nom">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input type="email" name="_replyto" required class="form-input" placeholder="votre@email.com">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Message</label>
+        <textarea name="message" rows="5" required class="form-input" style="resize:none;" placeholder="Votre message..."></textarea>
+      </div>
+      <div style="display:flex;gap:0.75rem;margin-top:1.5rem;">
+        <button type="submit" class="btn-primary" style="flex:1;">📧 Envoyer</button>
+        <button type="button" class="btn-ghost" onclick="closeContact()">Annuler</button>
+      </div>
+    </form>
   </div>
+</div>
 
   <!-- Lien vers le JS dynamique competencesMain.js (votre code inchangé) -->
   <script type="module" src="./js/competencesMain.js"></script>
