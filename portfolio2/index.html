@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mariama Sanneh-Robin — Développeuse Web</title>
+  <meta name="description" content="Portfolio de Mariama Sanneh-Robin, développeuse Full Stack en formation à Ada Tech School. Projets React, Next.js, TypeScript — spécialisée en vidéo-mapping et expériences immersives.">
   <!-- Fonts EN PREMIER, avant Tailwind -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Inter:wght@300;800&display=swap" rel="stylesheet">
   <!-- Tailwind avec config pour ne pas écraser les fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <script>
     tailwind.config = {
       theme: {
@@ -622,7 +623,7 @@
       </div> -->
 
       <div class="project-card" onclick="window.location='projets.html#goultard'" style="cursor:pointer;" title="Voir le projet">
-        <img loading="lazy" src="./public/logo/Wakfu_Logo.webp" 
+        <img loading="lazy" src="./public/logo/Wakfu_Logo.webp" alt="Logo Wakfu" 
              alt="Goultard" onerror="this.outerHTML='<span class=\'proj-emoji\'>⚔️</span>'">
         <h3>Goultard</h3>
         <p>Page interactive du personnage dans ses différents univers, structure dynamique en React, HTML, CSS et JavaScript.</p>
@@ -633,7 +634,7 @@
       </div>
 
       <div class="project-card" onclick="window.location='projets.html#patisseries'" style="cursor:pointer;" title="Voir le projet">
-         <img loading="lazy" src="./public/logo/logo.webp"
+         <img loading="lazy" src="./public/logo/logo.webp" alt="Logo du projet"
         onerror="this.outerHTML='<span class=\'proj-emoji\'>🥐</span>'">
         <h3>Pâtisseries du monde</h3>
         <p>Découvrir, ajouter et rechercher des pâtisseries du monde entier, avec un focus sur les meilleures adresses parisiennes.</p>
