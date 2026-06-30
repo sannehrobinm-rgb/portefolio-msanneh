@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mariama Sanneh-Robin — Développeuse Web</title>
-  <meta name="description" content="Portfolio de Mariama Sanneh-Robin, développeuse Full Stack en formation à Ada Tech School. Projets React, Next.js, TypeScript — spécialisée en vidéo-mapping et expériences immersives.">
   <!-- Fonts EN PREMIER, avant Tailwind -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -623,7 +622,7 @@
       </div> -->
 
       <div class="project-card" onclick="window.location='projets.html#goultard'" style="cursor:pointer;" title="Voir le projet">
-        <img loading="lazy" src="./public/logo/Wakfu_Logo.webp" alt="Logo Wakfu" 
+        <img loading="lazy" src="./public/logo/Wakfu_Logo.webp" 
              alt="Goultard" onerror="this.outerHTML='<span class=\'proj-emoji\'>⚔️</span>'">
         <h3>Goultard</h3>
         <p>Page interactive du personnage dans ses différents univers, structure dynamique en React, HTML, CSS et JavaScript.</p>
@@ -634,7 +633,7 @@
       </div>
 
       <div class="project-card" onclick="window.location='projets.html#patisseries'" style="cursor:pointer;" title="Voir le projet">
-         <img loading="lazy" src="./public/logo/logo.webp" alt="Logo du projet"
+         <img loading="lazy" src="./public/logo/logo.webp"
         onerror="this.outerHTML='<span class=\'proj-emoji\'>🥐</span>'">
         <h3>Pâtisseries du monde</h3>
         <p>Découvrir, ajouter et rechercher des pâtisseries du monde entier, avec un focus sur les meilleures adresses parisiennes.</p>
@@ -842,10 +841,8 @@
   </div>
 </div>
 
-  <!-- Lien vers le JS dynamique competencesMain.js (votre code inchangé) -->
-  <script type="module" src="./js/competencesMain.js"></script>
 
-  <script>
+grep -n '<title>' index.html  <script>
     // Nom pleine largeur — recalcule à chaque resize
   function fitTitle() {
   const hero = document.querySelector('.hero');
