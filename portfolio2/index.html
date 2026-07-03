@@ -93,7 +93,7 @@
     .nav-links a {
       font-family: 'Syne', sans-serif;
       font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.13em; text-transform: uppercase;
+      letter-spacing: 0.13em; 
       color: rgba(240,236,228,0.55);
       text-decoration: none;
       position: relative;
@@ -111,11 +111,11 @@
     .nav-contact-btn {
       font-family: 'Syne', sans-serif;
       font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase;
+      letter-spacing: 0.12em; 
       padding: 0.5rem 1.1rem;
       background: transparent;
-      border: 1px solid rgba(212,169,106,0.5);
-      border-radius: 2px;
+      
+      
       color: rgba(212,169,106,0.7);
       cursor: pointer;
       transition: all 0.2s;
@@ -135,7 +135,7 @@
     .hero-eyebrow {
       font-family: 'Inter', sans-serif ;
       font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.22em; text-transform: uppercase;
+      letter-spacing: 0.22em; 
       color: var(--pierre);
       display: flex; align-items: center; gap: 0.6rem;
       margin-bottom: 1.4rem;
@@ -147,7 +147,7 @@
     .hero h1 {
       font-weight: 800; line-height: 0.88;
       letter-spacing: -0.02em;
-      text-transform: uppercase;
+      
       color: white;
       width: 100vw;
       margin-left: -2.5rem;
@@ -194,10 +194,10 @@
     .btn-primary {
       font-family: 'Syne', sans-serif;
       font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.13em; text-transform: uppercase;
+      letter-spacing: 0.13em; 
       padding: 0.85rem 2rem;
       background: rgba(122, 48, 16, 0.85); color: #f0ece4;
-      border: none; border-radius: 2px; cursor: pointer;
+      border: none;  cursor: pointer;
       text-decoration: none; display: inline-block;
       transition: background 0.2s, transform 0.2s;
     }
@@ -205,10 +205,10 @@
     .btn-ghost {
       font-family: 'Syne', sans-serif;
       font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.13em; text-transform: uppercase;
+      letter-spacing: 0.13em; 
       padding: 0.85rem 2rem;
       background: transparent; color: var(--or)(122, 48, 16, 0.85);
-      border: 1px solid var(--or); border-radius: 2px;
+      border: 1px solid var(--or); 
       cursor: pointer; text-decoration: none; display: inline-block;
       transition: all 0.2s;
     }
@@ -237,7 +237,7 @@
     }
     .stat-label {
       font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;
-      font-family: 'Inter', sans-serif; letter-spacing: 0.1em; text-transform: uppercase;
+      font-family: 'Inter', sans-serif; letter-spacing: 0.1em; 
     }
 
     @media (max-width: 768px) {
@@ -248,7 +248,7 @@
     .section-tag {
       font-family: 'Inter', sans-serif!important;
       font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.25em; text-transform: uppercase;
+      letter-spacing: 0.25em; 
       color: var(--or);
       display: flex; align-items: center; gap: 0.6rem;
       margin-bottom: 0.6rem;
@@ -336,10 +336,10 @@
     .proj-tag {
       font-family: 'Syne', sans-serif;
       font-size: 0.58rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      letter-spacing: 0.1em; 
       padding: 0.18rem 0.5rem;
       border: 1px solid rgba(212,169,106,0.25);
-      border-radius: 2px; color: var(--pierre);
+       color: var(--pierre);
     }
 
     /* ──========== COMPÉTENCES SECTION ==========── */
@@ -360,7 +360,7 @@
     .skill-group-title {
       font-family: 'Syne', sans-serif;
       font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
+      letter-spacing: 0.18em; 
       color: var(--or);
       margin-bottom: 0.9rem;
       padding-bottom: 0.6rem;
@@ -452,7 +452,7 @@
       display: block;
       font-family: 'Syne', sans-serif;
       font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.15em; text-transform: uppercase;
+      letter-spacing: 0.15em; 
       color: var(--pierre); margin-bottom: 0.4rem;
     }
     .form-input {
@@ -488,13 +488,13 @@
     .site-footer p {
       font-family: 'Syne', sans-serif;
       font-size: 0.68rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--pierre);
+       color: var(--pierre);
     }
     .footer-links { display: flex; gap: 2rem; }
     .footer-links a {
       font-family: 'Syne', sans-serif;
       font-size: 0.68rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--pierre);
+       color: var(--pierre);
       text-decoration: none; transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--or-l); }
@@ -520,6 +520,69 @@
       .hero { padding: 80px 1.25rem 4rem; }
       .site-footer { padding: 1.25rem; }
     }
+
+    /* ── Menu déroulant mobile (index uniquement) ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-contact-btn#mobileContact { display: block !important; }
+      #mobileContact {
+        font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+        padding:0.4rem 0.8rem;background:transparent;
+        border:1px solid rgba(212,169,106,0.5);border-radius:2px;
+        color:rgba(212,169,106,0.8);cursor:pointer;
+      }
+      .nav-visit-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        
+        color: var(--or-l, #e8c98a);
+        background: transparent;
+        
+        
+        
+        cursor: pointer;
+        border: none;
+        outline: none;
+        position: relative;
+      }
+      .nav-visit-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(10,8,8,0.95);
+        border: 1px solid rgba(212,169,106,0.3);
+        border-radius: 8px;
+        padding: 0.5rem 0;
+        min-width: 220px;
+        z-index: 100;
+      }
+      .nav-visit-dropdown.open { display: block; }
+      .nav-visit-dropdown a {
+        display: block;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        
+        color: rgba(212,169,106,0.8);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-visit-dropdown a:hover { color: var(--or-l, #e8c98a); }
+      .nav-visit-wrap {
+        display: flex;
+        position: relative;
+      }
+    }
+    @media (min-width: 769px) {
+      .nav-visit-wrap { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -532,12 +595,20 @@
 
   <!--========== Navigation  ==========-->
   <nav class="main-nav">
-    <a href="index.html" class="nav-logo" style="background: linear-gradient(105deg, #3d1a00, #a0522d, #cd7f32, #e8a96a, #fff0c8, #e8a96a, #cd7f32, #7a3010); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: copperShimmer 4s ease-in-out infinite alternate;">SRM</a>
+    <a href="index.html" class="nav-logo" style="background:linear-gradient(105deg,#3d1a00,#a0522d,#cd7f32,#e8a96a,#fff0c8,#e8a96a,#cd7f32,#7a3010);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">MSR</a>
     <div class="nav-links">
       <a href="projets.html">WEB : Sites &amp; Applications</a>
       <a href="competences.html">Compétences</a>
       <button class="nav-contact-btn" onclick="openContact()" style="background:linear-gradient(105deg,#3d1a00,#a0522d,#cd7f32,#e8a96a,#fff0c8,#e8a96a,#cd7f32,#7a3010);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">Contact</button>
     </div>
+    <div class="nav-visit-wrap">
+      <button class="nav-visit-btn" onclick="toggleVisitMenu(event)">Visiter le site ▾</button>
+      <div class="nav-visit-dropdown" id="visitDropdown">
+        <a href="projets.html">WEB : Sites &amp; Applications</a>
+        <a href="competences.html">Compétences</a>
+      </div>
+    </div>
+    <button class="nav-contact-btn" onclick="openContact()" style="display:none;" id="mobileContact">Contact</button>
   </nav>
 
   <!-- ══========== HERO( petit titre au dessus de mon nom) ==========══ -->
@@ -870,6 +941,16 @@ if (document.fonts) {
 }
 window.addEventListener('resize', fitTitle);
 
+    function toggleVisitMenu(e) {
+      e.stopPropagation();
+      const d = document.getElementById("visitDropdown");
+      d.classList.toggle("open");
+    }
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".nav-visit-wrap")) {
+        document.getElementById("visitDropdown").classList.remove("open");
+      }
+    });
     function openContact() {
       document.getElementById('contactOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
