@@ -73,7 +73,60 @@
     @media (max-width: 768px) {
       .page-hero { padding: 0 1.25rem 3rem; }
     }
+
+    /* ══ Sections WEB Sites & Applications ══ */
+    .web-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 4rem 3rem;
+    }
+    .web-section-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent2, #b8924e);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .mini-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .mini-card:last-child { border-bottom: none; }
+    .mini-card img { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; }
+    .mini-card-body { flex: 1; }
+    .mini-card-title { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .mini-card-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.5rem; }
+    .mini-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.5rem; }
+    .mini-card-tag {
+      font-size: 0.62rem; font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid rgba(212,169,106,0.25);
+      border-radius: 2px;
+      color: var(--muted);
+    }
+    .mini-card-links { display: flex; gap: 0.5rem; }
+    .mini-card-link {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; padding: 0.25rem 0.6rem;
+      border-radius: 20px; border: 1px solid;
+    }
+    .mini-card-link.demo { background: var(--accent2, #b8924e); color: #fff; border-color: var(--accent2, #b8924e); }
+    .mini-card-link.github { background: transparent; color: var(--muted); border-color: var(--card-border); }
+    .mini-card-badge { font-size: 0.6rem; padding: 0.15rem 0.4rem; border-radius: 10px; margin-left: 0.4rem; }
+    .mini-card-badge.done { background: rgba(45,154,62,0.2); color: #2d9a3e; }
+    .mini-card-badge.wip { background: rgba(184,146,78,0.2); color: var(--accent2, #b8924e); }
+    @media (max-width: 768px) {
+      .web-sections { grid-template-columns: 1fr; padding: 2rem 1.25rem; }
+    }
   </style>
+
 </head>
 <body>
 
@@ -1052,6 +1105,107 @@
     </div>
   </section>
 
+
+  <!-- ══ WEB : Sites & Applications ══ -->
+  <div class="web-sections">
+
+    <!-- WEB : Sites -->
+    <div>
+      <div class="web-section-title">WEB : Sites</div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/logo.webp" alt="Globe Délice">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Globe Délice <span class="mini-card-badge done">✅ Terminé</span></div>
+          <div class="mini-card-desc">Application de découverte des pâtisseries du monde. Carte Leaflet, sliders, favoris, JWT.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">HTML</span><span class="mini-card-tag">CSS</span><span class="mini-card-tag">Node.js</span><span class="mini-card-tag">Neon</span><span class="mini-card-tag">Leaflet</span></div>
+          <div class="mini-card-links"><a href="https://globe-delice.vercel.app" target="_blank" class="mini-card-link demo">Démo →</a><a href="https://github.com/sannehrobinm-rgb/GlobeD-lice" target="_blank" class="mini-card-link github">GitHub</a></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/Wakfu_Logo.webp" alt="Fan-site Wakfu">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Fan-site Wakfu <span class="mini-card-badge done">✅ Terminé</span></div>
+          <div class="mini-card-desc">Fan-site interactif dédié à Goultard. Chronologie, caractéristiques, Ankamaverse.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">React</span><span class="mini-card-tag">HTML/CSS</span><span class="mini-card-tag">JavaScript</span><span class="mini-card-tag">Vercel</span></div>
+          <div class="mini-card-links"><a href="https://wakfu-goultard.vercel.app" target="_blank" class="mini-card-link demo">Démo →</a></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/panier-fute.webp" alt="Panier Futé" onerror="this.outerHTML='<span style="font-size:2rem">🛒</span>'">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Panier Futé <span class="mini-card-badge done">✅ Terminé</span></div>
+          <div class="mini-card-desc">Application de gestion de courses intelligente. Suggestions, budget, recettes.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">Angular</span><span class="mini-card-tag">Java Spring Boot</span><span class="mini-card-tag">Neon</span></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/sayan-legacy.webp" alt="Sayan Legacy" onerror="this.outerHTML='<span style="font-size:2rem">⚔️</span>'">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Sayan Legacy <span class="mini-card-badge wip">🚧 En cours</span></div>
+          <div class="mini-card-desc">Site web avec IA intégrée via Claude API. Next.js, Prisma v7, Neon PostgreSQL.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">Next.js</span><span class="mini-card-tag">Prisma</span><span class="mini-card-tag">Claude API</span><span class="mini-card-tag">Neon</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WEB : Applications -->
+    <div>
+      <div class="web-section-title">WEB : Applications</div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/CITIZEN13.webp" alt="Citizen-13">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Citizen-13 <span class="mini-card-badge done">✅ Terminé</span></div>
+          <div class="mini-card-desc">Plateforme terrain pour le 13e arr. Visites, boîtage, tableau de bord admin, carte Leaflet.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">React</span><span class="mini-card-tag">Next.js</span><span class="mini-card-tag">PostgreSQL</span><span class="mini-card-tag">JWT</span></div>
+          <div class="mini-card-links"><a href="https://citizen13.vercel.app" target="_blank" class="mini-card-link demo">Démo →</a></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/echo.webp" alt="E.C.H.O." onerror="this.outerHTML='<span style="font-size:2rem">🔊</span>'">
+        <div class="mini-card-body">
+          <div class="mini-card-title">E.C.H.O. <span class="mini-card-badge wip">🚧 En cours</span></div>
+          <div class="mini-card-desc">Plateforme multilingue européenne CERV — mémoire, culture, numérique, citoyenneté.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">Next.js</span><span class="mini-card-tag">TypeScript</span><span class="mini-card-tag">NextAuth</span><span class="mini-card-tag">Prisma</span></div>
+          <div class="mini-card-links"><a href="https://echo.espoir18.org" target="_blank" class="mini-card-link demo">Voir →</a></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/board-play.webp" alt="Board Play" onerror="this.outerHTML='<span style="font-size:2rem">🎲</span>'">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Board Play <span class="mini-card-badge wip">🚧 En cours</span></div>
+          <div class="mini-card-desc">Application de gestion de jeux de société. FastAPI Python, Neon PostgreSQL.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">FastAPI</span><span class="mini-card-tag">Python</span><span class="mini-card-tag">Neon</span></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/grace-hopper.webp" alt="Code Grace Hopper" onerror="this.outerHTML='<span style="font-size:2rem">💻</span>'">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Code : Grace Hopper <span class="mini-card-badge wip">🚧 En cours</span></div>
+          <div class="mini-card-desc">Application collaborative dédiée à la promo Grace Hopper 2026 — Ada Tech School.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">React</span><span class="mini-card-tag">Node.js</span><span class="mini-card-tag">PostgreSQL</span></div>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <img loading="lazy" src="./public/logo/SchoolNova.webp" alt="Nova School">
+        <div class="mini-card-body">
+          <div class="mini-card-title">Nova School <span class="mini-card-badge wip">🚧 En cours</span></div>
+          <div class="mini-card-desc">Application scolaire de gestion des cours, élèves et emplois du temps.</div>
+          <div class="mini-card-tags"><span class="mini-card-tag">React</span><span class="mini-card-tag">Node.js</span><span class="mini-card-tag">PostgreSQL</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
   <!-- Footer -->
   <footer class="site-footer">
     <a href="competences.html" style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:linear-gradient(105deg,#f5d490 0%,#fff0c8 20%,#fffde8 40%,#fff0c8 60%,#f5d490 80%,#fff0c8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;">Compétences</a>
