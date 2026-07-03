@@ -531,7 +531,7 @@
         border:1px solid rgba(212,169,106,0.5);border-radius:2px;
         color:rgba(212,169,106,0.8);cursor:pointer;
       }
-      .nav-visit-btn {
+      .nav-visit-btn, .nav-visit-wrap > summary {
         display: flex;
         align-items: center;
         gap: 0.4rem;
@@ -562,7 +562,7 @@
         min-width: 220px;
         z-index: 100;
       }
-      .nav-visit-dropdown.open { display: block; }
+      .nav-visit-wrap[open] .nav-visit-dropdown { display: block; }
       .nav-visit-dropdown a {
         display: block;
         padding: 0.6rem 1.2rem;
@@ -601,13 +601,13 @@
       <a href="competences.html">Compétences</a>
       <button class="nav-contact-btn" onclick="openContact()" style="background:linear-gradient(105deg,#3d1a00,#a0522d,#cd7f32,#e8a96a,#fff0c8,#e8a96a,#cd7f32,#7a3010);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:copperShimmer 4s ease-in-out infinite alternate;">Contact</button>
     </div>
-    <div class="nav-visit-wrap">
-      <button class="nav-visit-btn" onclick="toggleVisitMenu(event)">Visiter le site ▾</button>
-      <div class="nav-visit-dropdown" id="visitDropdown">
+    <details class="nav-visit-wrap">
+      <summary class="nav-visit-btn">Visiter le site ▾</summary>
+      <div class="nav-visit-dropdown">
         <a href="projets.html">WEB : Sites &amp; Applications</a>
         <a href="competences.html">Compétences</a>
       </div>
-    </div>
+    </details>
     <button class="nav-contact-btn" onclick="openContact()" style="display:none;" id="mobileContact">Contact</button>
   </nav>
 
@@ -941,16 +941,6 @@ if (document.fonts) {
 }
 window.addEventListener('resize', fitTitle);
 
-    function toggleVisitMenu(e) {
-      e.stopPropagation();
-      const d = document.getElementById("visitDropdown");
-      d.classList.toggle("open");
-    }
-    document.addEventListener("click", function(e) {
-      if (!e.target.closest(".nav-visit-wrap")) {
-        document.getElementById("visitDropdown").classList.remove("open");
-      }
-    });
     function openContact() {
       document.getElementById('contactOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
